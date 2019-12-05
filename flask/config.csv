@@ -1,0 +1,2 @@
+application_id,access_key,reply_url,token_endpoint,base_url
+130b9523-30e6-4143-a8f7-ff4f3069d287,25ee2680-2888-46f1-98ea-6dfd218c4cd7,*,https://api.preprod.fusionfabric.cloud/login/v1/sandbox/oidc/token,https://api.fusionfabric.cloud/fxrate/v1/
