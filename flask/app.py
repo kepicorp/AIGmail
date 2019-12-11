@@ -71,7 +71,7 @@ def payment():
         return jsonify({'error': 'there was an error'})
 
 if __name__ == '__main__':
-    port = 5000
+    port = 5001
     model_filepath = 'crf_model_with_currency.pkl'
 
     c = CRF_NER(model_filepath)

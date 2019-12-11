@@ -78,7 +78,7 @@ function makePrediction(view, text) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:5000/predict",
+    "url": "http://localhost:5001/predict",
     //"url": "https://finastraemailpayment.azurewebsites.net/api/Predict?code=ZXz6mNiJlq/Zcpqpw9POaYZQbhrYpKAbxCsGYvBfEVu8OqHMbH1uDQ==",
     "method": "POST",
     "type": "POST",
@@ -119,7 +119,7 @@ function makePayment(view) {
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://localhost:5000/payment",
+    "url": "http://localhost:5001/payment",
     //"url": "http://localhost:7071/api/Payment",
     "method": "POST",
     "type": "POST",
