@@ -32,7 +32,7 @@ Go in the extension menu in chrome
 
 ![extension](assets/chrome_extension.png)
 
-And then load unpacked app 
+And then load unpacked app.  
 
 > Make sure you ticked the developer toggle top right
 
@@ -43,8 +43,8 @@ And then load unpacked app
 Open your gmail account.
 Create a new email.
 Type in the *body* of the email:
-```
-I want to send 500 USD from AccountA to AccountB
-```
+```I want to send 500 USD from AccountA to AccountB```
+
+![payment](assets/payment.png)
 
 It should automatically flag everything required.
