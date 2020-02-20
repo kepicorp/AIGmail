@@ -4,8 +4,6 @@
 
 This adds an NLP capability to your gmail account to send payment to GPP.
 
-ADD IMAGE
-
 ## Install
 
 ### Back-end server
