@@ -57,13 +57,14 @@ def payment():
         # print(str(payload))
         # payload['debtorAccountId']['name'] = json_['accountB']
         # payload['creditor']['name'] = json_['accountA']
-        payload['paymentIdentification']['EndToEndId'] = json_['accountA'] + json_['accountB']
+        payload['paymentIdentification']['EndToEndId'] = json_['accountA'].strip(u'\u200b') + json_['accountB'].strip(u'\u200b')
         payload['instructedAmount']['amount'] = json_['amount']
 
-        # print('###'+str(payload))
+        print(payload)
 
         response = p.connect_endpoint(payload)
         print(response)
+        print(response.text)
 
         returnResponse = jsonify(response.text)
 
