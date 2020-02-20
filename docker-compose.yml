@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+
+  flask:
+    build:
+      context: flask
+    ports:
+    - 5001:5001
