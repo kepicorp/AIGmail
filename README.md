@@ -16,11 +16,16 @@ Pull the repository
 git clone git@github.com:kepicorp/AIGmail.git
 ```
 
+Configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *flask/config.csv* file.
+
 Run the docker compose
+
+> to build image add ```---build``` at the end of the command line
 
 ```bash
 docker-compose up
 ```
+
 
 The back-end is now running on ```http://localhost:5001```
 
