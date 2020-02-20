@@ -16,13 +16,13 @@ def predict():
         if crf:
             print ('inside predict')
             try:
-                print(str(request))
+                # print(str(request))
                 json_ = request.json
-                print(str(json_))
+                # print(str(json_))
                 sentence = json_["email"]
-                print(sentence)
+                # print(sentence)
                 result = c.query(sentence)
-                print(result)
+                # print(result)
                 response = jsonify(result)
                 response.headers.add('Access-Control-Allow-Origin', '*')
                 response.headers.add('Access-Control-Allow-Headers', 'origin')
@@ -44,7 +44,7 @@ def payment():
     try:
         print('trying authentication')
         json_ = request.json
-        print(str(json_))
+        # print(str(json_))
 
         a = authenticate.authenticate('config.csv')
         response,token = a.get_token()
@@ -54,13 +54,13 @@ def payment():
         p = payments_api.payments_api(token,'POST')
 
         payload = p.sample_post
-        print(str(payload))
+        # print(str(payload))
         # payload['debtorAccountId']['name'] = json_['accountB']
         # payload['creditor']['name'] = json_['accountA']
         payload['paymentIdentification']['EndToEndId'] = json_['accountA'] + json_['accountB']
         payload['instructedAmount']['amount'] = json_['amount']
 
-        print('###'+str(payload))
+        # print('###'+str(payload))
 
         response = p.connect_endpoint(payload)
         print(response)
