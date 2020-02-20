@@ -71,6 +71,7 @@ def payment():
         return jsonify({'error': 'there was an error'})
 
 if __name__ == '__main__':
+    host='0.0.0.0'
     port = 5001
     model_filepath = 'crf_model_with_currency.pkl'
 
@@ -78,4 +79,4 @@ if __name__ == '__main__':
     crf = c.load_model()
     print ('Model loaded')
 
-    app.run(port=port, debug=True)#, ssl_context='adhoc')
+    app.run(host=host, port=port, debug=False)#, ssl_context='adhoc')
