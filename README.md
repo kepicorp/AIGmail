@@ -15,7 +15,7 @@ Clone the repository
 > If you already cloned and want to update use ```git pull```
 
 ```bash
-git clone git@github.com:kepicorp/AIGmail.git
+git clone https://github.com/kepicorp/AIGmail.git
 ```
 
 Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *flask/config.csv* file
@@ -31,7 +31,6 @@ Run the docker compose
 ```bash
 docker-compose up
 ```
-
 
 The back-end is now running on ```http://localhost:5001```
 
