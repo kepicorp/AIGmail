@@ -55,11 +55,12 @@ def payment():
 
         payload = p.sample_post
         print(str(payload))
-        payload['debtorAccountId']['name'] = json_['accountB']
-        payload['creditor']['name'] = json_['accountA']
+        # payload['debtorAccountId']['name'] = json_['accountB']
+        # payload['creditor']['name'] = json_['accountA']
+        payload['paymentIdentification']['EndToEndId'] = json_['accountA'] + json_['accountB']
         payload['instructedAmount']['amount'] = json_['amount']
 
-        print(str(payload))
+        print('###'+str(payload))
 
         response = p.connect_endpoint(payload)
         print(response)

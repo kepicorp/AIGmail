@@ -16,7 +16,11 @@ Pull the repository
 git clone git@github.com:kepicorp/AIGmail.git
 ```
 
-Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *flask/config.csv* file.
+Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *flask/config.csv* file
+
+| application_id | access_key | reply_url | token_endpoint | base_url |
+| --- | --- | --- | --- | --- |
+| USER ID | ACCESS KEY | * | https://api.fusionfabric.cloud/login/v1/sandbox/oidc/token | https://api.preprod.fusionfabric.cloud/payment/payment-initiation/realtime-payments/v1/us-real-time-payment/tch-rtps/initiate |
 
 Run the docker compose
 
