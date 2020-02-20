@@ -16,7 +16,7 @@ Pull the repository
 git clone git@github.com:kepicorp/AIGmail.git
 ```
 
-Configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *flask/config.csv* file.
+Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *flask/config.csv* file.
 
 Run the docker compose
 
