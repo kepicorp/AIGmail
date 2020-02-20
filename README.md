@@ -10,7 +10,9 @@ This adds an NLP capability to your gmail account to send payment to GPP.
 
 Make sure you have [docker](https://docker.io) installed.
 
-Pull the repository
+Clone the repository
+
+> If you already cloned and want to update use ```git pull```
 
 ```bash
 git clone git@github.com:kepicorp/AIGmail.git
