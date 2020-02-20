@@ -8,7 +8,7 @@ This adds an NLP capability to your gmail account to send payment to GPP.
 
 ### Back-end server
 
-Make sure you have [docker](https://docker.io) installed.
+Make sure you have [docker](https://docker.io) installed and [git](https://git-scm.com/downloads).
 
 Clone the repository
 
