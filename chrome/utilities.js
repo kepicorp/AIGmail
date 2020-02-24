@@ -141,6 +141,36 @@ function makePayment(view) {
   });
 }
 
+function makePaymentasync(view) {
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "http://localhost:5001/payment",
+    //"url": "http://localhost:7071/api/Payment",
+    "method": "POST",
+    "type": "POST",
+    "headers": {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": '*',
+    },
+    "processData": false,
+    "data": `{"amount":"${view.latestPrediction.amount}",
+             "accountA":"${view.latestPrediction.accountA}",
+             "accountB":"${view.latestPrediction.accountB}",
+             "currency":"${view.latestPrediction.currency}"}`,
+  }
+  console.log("MAKE PAYMENT ASYNC");
+
+  var myPromise = $.ajax(settings).success(function (response) {
+    console.log("GOT PAYMENT ASYNC RESPONSE");
+    console.log(response);
+    myJSON = JSON.parse(response);
+    alert('Payment ID: ' + myJSON.paymentResourceId + ' with STATUS :' + myJSON.transactionStatus);
+  });
+
+  return myPromise;
+}
+
 
 function getCaretCharacterOffsetWithin(element) {
   var caretOffset = 0;
