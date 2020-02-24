@@ -12,16 +12,14 @@ InboxSDK.load(2, 'sdk_payment-nlp_0e9250b655').then(function (sdk) {
     // your app code using 'sdk' goes in here
     $(document).ready(function () {
         sdk.Conversations.registerMessageViewHandler(function (messageView) {
-
             messageView.on('load', function (event) {
                 currentMessageView = event.messageView;
                 console.log('message view loaded');
             });
-
             messageView.on('destroy', function (event) {
                 // console.log('message view going away, time to clean up');
             });
-
+            
             let interval = rxjs.interval(200);
             let pipe = interval.pipe(
                 // Turn the stream into results of querying for the tablist element
@@ -34,24 +32,24 @@ InboxSDK.load(2, 'sdk_payment-nlp_0e9250b655').then(function (sdk) {
         });
     });
 });
-
+    
 function mountSidebar() {
     _sdk.Conversations.registerThreadViewHandler(threadView => {
         //console.log(threadView);
         let messageViews = threadView.getMessageViewsAll();
         let theMessageView = null;
         
-
+        
         //console.log(messageViews);
-
+        
         // maybe don't need this
         messageViews.forEach(function (element) {
             if (element == currentMessageView)
-                theMessageView = element;
+            theMessageView = element;
         });
-
+        
         theMessageView = messageViews[messageViews.length - 1];
-
+        
         //console.log(theMessageView.getBodyElement());
         let textContent = extractContent(theMessageView.getBodyElement().outerHTML).toString();
         textContent = textContent.replace(/ +(?= )/g,'').trim();
@@ -63,33 +61,33 @@ function mountSidebar() {
         .replace(/>/g, '')
         .replace(/:/g, '')
         .replace(/,/g, '');
-
+        
         console.log(combinedWords);
         theMessageView["predictionStack"] = [];
         let thePromise = makePrediction(theMessageView, combinedWords);
-
+        
         thePromise.then(function (value) {
             console.log("GOT MESSAGEVIEW PREDICTION");
             console.log(theMessageView.predictionStack);
-
+            
             let prediction = theMessageView.predictionStack[theMessageView.predictionStack.length - 1];
             
             console.log(prediction);
             if(!prediction)
-                return;
+            return;
             
             theMessageView["latestPrediction"] = prediction;
-
+            
             console.log(prediction);
             highlightElements(prediction);
-
-
+            
+            
             //if(!contentPanelView) {
-               let contentPanelElement = document.createElement("div");
+            let contentPanelElement = document.createElement("div");
             //}
-
+            
             contentPanelElement.innerHTML = createPaymentContent(prediction.amount, prediction.accountA, prediction.accountB, prediction.currency);
-
+            
             let contentPanelView = threadView.addSidebarContentPanel({
                 title: 'Finastra Payment NLP',
                 el: contentPanelElement,
@@ -97,80 +95,90 @@ function mountSidebar() {
             });
             
             //contentPanelViews.push(contentPanelView);
-
+            
             console.log(threadView);
-
+            
             contentPanelView.on('activate', function (event) {
                 mdlTest();
-
+                
                 var snackbarContainer = document.querySelector('#demo-snackbar-example');
                 var sendPaymentButton = document.getElementById("sendPayment");
-
-
+                
+                
                 sendPaymentButton.addEventListener("click", function () {
-                    makePayment(theMessageView);
-
+                    //makePayment(theMessageView);
+                    let promise = makePaymentasync(theMessageView);
+                    
                     var data = {
                         message: 'Payment sent.',
-                        timeout: 3000,
+                        timeout: 2000,
                         actionHandler: null,
                         actionText: ''
-                      };
-                      snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                    };
+                    snackbarContainer.MaterialSnackbar.showSnackbar(data); 
+                    
+                    promise.then( () => {
+                        var data = {
+                            message: 'Payment Succeded!',
+                            timeout: 3000,
+                            actionHandler: null,
+                            actionText: ''
+                        };
+                        snackbarContainer.MaterialSnackbar.showSnackbar(data);                        
+                    });
                 });
             });
             contentPanelView.on('destroy', function (event) {
                 console.log("content panel view destroyed");
                 console.log(this);
-
+                
                 this.remove();
                 //this = null;
             });
         });
-
+        
         threadView.on('destroy', function (event) {
             console.log("Thread view going away");
-
+            
             //if(!!contentPanelView)
-             //   contentPanelView.remove();
-
+            //   contentPanelView.remove();
+            
             //contentPanelView = null;
         });
     });
-}
-
+}    
 
 function highlightElements(prediction) {
     let elements = $("div[data-message-id]");
     console.log(prediction);
-
+    
     if (!!elements && !!elements.array) {
         elements.array.forEach(element => {
             // console.log("calling highlighter loop array");
             if(!!prediction.accountA)
-                highlightElement(prediction.accountA, element, "rgb(149, 183, 237)");
+            highlightElement(prediction.accountA, element, "rgb(149, 183, 237)");
             if(!!prediction.accountB)    
-                highlightElement(prediction.accountB, element, "rgb(245, 247, 150)");
+            highlightElement(prediction.accountB, element, "rgb(245, 247, 150)");
             if(!!prediction.amount)
-                highlightElement(prediction.amount, element, "rgb(158, 247, 159)");
+            highlightElement(prediction.amount, element, "rgb(158, 247, 159)");
             if(!!prediction.currency)
-                highlightElement(prediction.currency, element, "rgb(167, 66, 245)");
-
+            highlightElement(prediction.currency, element, "rgb(167, 66, 245)");
+            
             //openPaymentWidget();
         });
     }
-
+    
     else if (!!elements && !!elements[0]) {
         // console.log("calling highlighter individual element");
         if(!!prediction.accountA)
-            highlightElement(prediction.accountA, elements[0], "rgb(149, 183, 237)");
+        highlightElement(prediction.accountA, elements[0], "rgb(149, 183, 237)");
         if(!!prediction.accountB)    
-            highlightElement(prediction.accountB, elements[0], "rgb(245, 247, 150)");
+        highlightElement(prediction.accountB, elements[0], "rgb(245, 247, 150)");
         if(!!prediction.amount)
-            highlightElement(prediction.amount, elements[0], "rgb(158, 247, 159)");
+        highlightElement(prediction.amount, elements[0], "rgb(158, 247, 159)");
         if(!!prediction.currency)
-            highlightElement(prediction.currency, elements[0], "rgb(167, 66, 245)");
-
+        highlightElement(prediction.currency, elements[0], "rgb(167, 66, 245)");
+        
         //openPaymentWidget();
     }
 }

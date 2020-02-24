@@ -73,7 +73,7 @@ InboxSDK.load(2, 'sdk_payment-nlp_0e9250b655').then(function(sdk){
         let textContent = composeView.getTextContent();
         let words = textContent.match(/\S+/g) || [];
 
-        if(timeDifference > 1 && words.length > 1)
+        if(timeDifference > 10 && words.length > 1)
         {
             processPrediction(composeView, textContent);
         }
