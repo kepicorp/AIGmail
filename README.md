@@ -41,7 +41,7 @@ Go in the extension menu in chrome
 
 ![extension](assets/chrome_extension.png)
 
-And then load unpacked app.  
+And then load unpacked extension by clicking on ```load unpack``` and selecting the ```chrome``` folder in your git repository.
 
 > Make sure you ticked the developer toggle top right
 
