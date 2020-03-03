@@ -5,7 +5,7 @@ class payments_api:
     def __init__(self,token,method,additional_headers={},params = None): 
         self.token = token 
         self.endpoint_type = method
-        self.base_url = 'https://api.preprod.fusionfabric.cloud/payment/payment-initiation/realtime-payments/v1/us-real-time-payment/tch-rtps/initiate'
+        self.base_url = 'https://api.fusionfabric.cloud/payment/payment-initiation/realtime-payments/v1/us-real-time-payment/tch-rtps/initiate'
         self.additional_headers = additional_headers
         self.params = params
         self.sample_post = {  
@@ -42,6 +42,7 @@ class payments_api:
     
     def connect_endpoint(self, payload):
         self.url = self.base_url 
+        print('Using token ' + self.token)
         headers = {
             'Authorization': 'Bearer ' + self.token,
             'Content-Type' : 'application/json'
