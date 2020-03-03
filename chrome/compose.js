@@ -44,7 +44,6 @@ InboxSDK.load(2, 'sdk_payment-nlp_0e9250b655').then(function(sdk){
                 composeView.latestContentChange = currentTimestamp; 
                          
                 console.log(composeView);
-                checkAndMakePrediction(composeView, textContent);
             });
         
             composeView.on('destroy', function(event) {
@@ -63,9 +62,6 @@ InboxSDK.load(2, 'sdk_payment-nlp_0e9250b655').then(function(sdk){
     function intervalCallback(composeView) {
         //console.log("prediction stack: " + composeView.predictionStack);
 
-        if(composeView.predictionStack.length == 0)
-            return;
-
         let currentTimestamp = Math.floor(Date.now() / 1000);
         let timeDifference = currentTimestamp - composeView.latestContentChange;
         console.log("TIME DIFFERENCE: " + timeDifference);
@@ -73,10 +69,15 @@ InboxSDK.load(2, 'sdk_payment-nlp_0e9250b655').then(function(sdk){
         let textContent = composeView.getTextContent();
         let words = textContent.match(/\S+/g) || [];
 
-        if(timeDifference > 5 && words.length > 1)
+        if(timeDifference > 3 && words.length > 1 && composeView.predictionStack.length == 0)
+        {  
+            checkAndMakePrediction(composeView, textContent);
+        }
+        else if(timeDifference > 5 && words.length > 1 && composeView.predictionStack.length !== 0)
         {
             processPrediction(composeView, textContent);
         }
+        
     }
 
     function handleComposeButtonClick(event) {

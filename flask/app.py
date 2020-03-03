@@ -48,29 +48,33 @@ def payment():
 
         a = authenticate.authenticate('config.csv')
         response,token = a.get_token()
-        
-        print(token)
+        returnResponse = jsonify({})
+        print(response.status_code)
 
-        p = payments_api.payments_api(token,'POST')
+        if response.status_code == 200:
+            print(token)
 
-        payload = p.sample_post
-        # print(str(payload))
-        # payload['debtorAccountId']['name'] = json_['accountB']
-        # payload['creditor']['name'] = json_['accountA']
-        payload['paymentIdentification']['EndToEndId'] = json_['accountA'].strip(u'\u200b') + json_['accountB'].strip(u'\u200b')
-        payload['instructedAmount']['amount'] = json_['amount']
+            p = payments_api.payments_api(token,'POST')
 
-        print(payload)
+            payload = p.sample_post
+            # print(str(payload))
+            # payload['debtorAccountId']['name'] = json_['accountB']
+            # payload['creditor']['name'] = json_['accountA']
+            payload['paymentIdentification']['EndToEndId'] = json_['accountA'].strip(u'\u200b') + json_['accountB'].strip(u'\u200b')
+            payload['instructedAmount']['amount'] = json_['amount']
 
-        response = p.connect_endpoint(payload)
-        print(response)
-        print(response.text)
+            print(payload)
 
-        returnResponse = jsonify(response.text)
+            response = p.connect_endpoint(payload)
+            print(response.text)
+            returnResponse = jsonify(response.text)
+        else:
+            print('Failed login')
+            returnReponse = jsonify(response.text)
 
         return returnResponse    
     except:
-        return jsonify({'error': 'there was an error'})
+        return '{"statusCode" : "500", "message": "Authentication Failed!" }'
 
 if __name__ == '__main__':
     host='0.0.0.0'

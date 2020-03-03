@@ -1,0 +1,2 @@
+application_id,access_key,reply_url,token_endpoint
+5d2f52e8-a55f-4c07-8b1c-183db53a62cd,19eaea4d-92f4-44af-a0c2-3283f1d03a7b,*,https://api.fusionfabric.cloud/login/v1/sandbox/oidc/token

@@ -163,9 +163,13 @@ function makePaymentasync(view) {
 
   var myPromise = $.ajax(settings).success(function (response) {
     console.log("GOT PAYMENT ASYNC RESPONSE");
-    console.log(response);
     myJSON = JSON.parse(response);
-    alert('Payment ID: ' + myJSON.paymentResourceId + ' with STATUS :' + myJSON.transactionStatus);
+    console.log(myJSON);
+    if (myJSON.statusCode) {
+      alert('Error: ' + myJSON.statusCode + ' with message: ' + myJSON.message)
+    }else {
+      alert('Payment ID: ' + myJSON.paymentResourceId + ' with STATUS : ' + myJSON.transactionStatus);
+    }
   });
 
   return myPromise;

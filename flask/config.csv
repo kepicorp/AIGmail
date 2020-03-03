@@ -1,2 +1,0 @@
-application_id,access_key,reply_url,token_endpoint,base_url
-f8ecb054-9905-49a8-b1ee-38469994bfa8,df8dcafc-7a35-4265-a224-406e1f63ae9f,*,https://api.preprod.fusionfabric.cloud/login/v1/sandbox/oidc/token,https://api.preprod.fusionfabric.cloud/payment/payment-initiation/realtime-payments/v1/us-real-time-payment/tch-rtps/initiate
