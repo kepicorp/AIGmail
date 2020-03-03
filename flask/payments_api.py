@@ -42,7 +42,6 @@ class payments_api:
     
     def connect_endpoint(self, payload):
         self.url = self.base_url 
-        print('Using token ' + self.token)
         headers = {
             'Authorization': 'Bearer ' + self.token,
             'Content-Type' : 'application/json'
