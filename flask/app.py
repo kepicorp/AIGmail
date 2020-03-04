@@ -50,6 +50,7 @@ def payment():
         response,token = a.get_token()
         returnResponse = jsonify({})
         print(response.status_code)
+        print(token)
 
         if response.status_code == 200:
             print(token)

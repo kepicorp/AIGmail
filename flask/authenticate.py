@@ -10,6 +10,7 @@ class authenticate:
         print('using config file: ' + str(config_file) + ' with endpoint ' + self.token_endpoint)
 
     def get_token(self):
+        print('inside get token')
         headers = {
         }
         data = {
@@ -18,8 +19,8 @@ class authenticate:
             'client_secret' : self.client_secret
         }
         response = requests.request('POST', self.token_endpoint, data=data, headers=headers)
-        # print(response)
-        # print(response.text)
+        print(response)
+        print(response.text)
         cleaned_response = response.text.replace(':null', ':"null"')
         
         response_dict = eval(cleaned_response)
