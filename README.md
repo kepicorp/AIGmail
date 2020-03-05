@@ -23,6 +23,7 @@ Assuming you registered an app at [fusion fabric developer website](https://deve
 | application_id | access_key | reply_url | token_endpoint |
 | --- | --- | --- | --- |
 | USER ID | ACCESS KEY | * | https://api.fusionfabric.cloud/login/v1/sandbox/oidc/token |
+
 Run the docker compose
 
 > to build image add ```---build``` at the end of the command line
