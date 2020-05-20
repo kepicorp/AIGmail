@@ -59,8 +59,8 @@ def payment():
 
             payload = p.sample_post
             # print(str(payload))
-            # payload['debtorAccountId']['name'] = json_['accountB']
-            # payload['creditor']['name'] = json_['accountA']
+            payload['debtorAccountId']['name'] = json_['accountB']
+            payload['creditor']['name'] = json_['accountA']
             payload['paymentIdentification']['EndToEndId'] = json_['accountA'].strip(u'\u200b') + json_['accountB'].strip(u'\u200b')
             payload['instructedAmount']['amount'] = json_['amount']
 
