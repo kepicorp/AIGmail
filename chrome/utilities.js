@@ -168,7 +168,7 @@ function makePaymentasync(view) {
     if (myJSON.statusCode) {
       alert('Error: ' + myJSON.statusCode + ' with message: ' + myJSON.message)
     }else {
-      alert('Payment ID: ' + myJSON.paymentResourceId + ' with STATUS : ' + myJSON.transactionStatus);
+      alert('Payment ID: ' + myJSON.paymentResourceId + ' with STATUS : ' + myJSON.status + ' and Details : ' + myJSON.statusReasonCode);
     }
   });
 

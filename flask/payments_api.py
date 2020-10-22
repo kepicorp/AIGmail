@@ -5,39 +5,40 @@ class payments_api:
     def __init__(self,token,method,additional_headers={},params = None): 
         self.token = token 
         self.endpoint_type = method
-        self.base_url = 'https://api.fusionfabric.cloud/payment/payment-initiation/realtime-payments/v1/us-real-time-payment/tch-rtps/initiate'
+        self.base_url = 'https://api.fusionfabric.cloud/payment/payment-initiation/realtime-payments/v2/us-real-time-payment/tch-rtps/initiate'
         self.additional_headers = additional_headers
         self.params = params
-        self.sample_post = {  
-   "initiatingParty":"LOCALOFFICEUS1",
-   "paymentInformationId":"MMSTADV52788075",
-   "requestedExecutionDate":"2020-02-20",
-   "instructedAmount":{  
-      "amount":10,
-      "currency":"USD"
-   },
-   "paymentIdentification":{  
-      "EndToEndId":"{{UniqueId}}"
-   },
-   "debtor":{  
-      "name":"NPP DR test2 ACC"
-   },
-   "debtorAgent":{  
-      "identification":"020010001"
-   },
-   "debtorAccountId":{  
-      "identification":"745521145"
-   },
-   "creditor":{  
-      "name":"NPP CR test ACC"
-   },
-   "creditorAgent":{  
-      "identification":"131000000"
-   },
-   "creditorAccountId":{  
-      "identification":"1111111111"
-   },
-   "remittanceInformationUnstructured":"RmtInf1234"
+        self.sample_post = {
+  "sourceId": "Payment source system name",
+  "initiatingParty": "LOCALOFFICEUS1",
+  "paymentInformationId": "1545922187435",
+  "requestedExecutionDate": "2018-12-06",
+  "instructedAmount": {
+    "amount": 100,
+    "currency": "USD"
+  },
+  "paymentIdentification": {
+    "endToEndId": "TESTINGPIERRE"
+  },
+  "debtor": {
+    "name": "Dbtr Name"
+  },
+  "debtorAgent": {
+    "identification": "020010001"
+  },
+  "debtorAccountId": {
+    "identification": "745521145"
+  },
+  "creditor": {
+    "name": "Cdtr Name"
+  },
+  "creditorAgent": {
+    "identification": "131000000"
+  },
+  "creditorAccountId": {
+    "identification": "1111111111"
+  },
+  "remittanceInformationUnstructured": "RmtInf1234"
 }
     
     def connect_endpoint(self, payload):
