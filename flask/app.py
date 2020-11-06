@@ -46,7 +46,7 @@ def payment():
         json_ = request.json
         # print(str(json_))
 
-        a = authenticate.authenticate('config.csv')
+        a = authenticate.authenticate('config/config.csv')
         response,token = a.get_token()
         returnResponse = jsonify({})
         print(response.status_code)

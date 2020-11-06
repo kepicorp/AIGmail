@@ -6,6 +6,6 @@ services:
     build:
       context: flask
     volumes:
-      - ./config.csv:/app/config.csv
+      - ./config/:/app/config/:ro
     ports:
     - 5001:5001
