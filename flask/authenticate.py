@@ -1,12 +1,16 @@
 import requests
-import pandas as pd
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 class authenticate:
     def __init__(self, config_file):
-        self.df = pd.read_csv(config_file)
-        self.client_id = self.df['application_id'].values[0]
-        self.client_secret = self.df['access_key'].values[0]
-        self.token_endpoint = self.df['token_endpoint'].values[0]
+        self.client_id = os.getenv('CLIENT_ID')
+        print('Got client_id: '+self.client_id)
+        self.client_secret = os.getenv('CLIENT_SECRET')
+        print('Got client_secret')
+        self.token_endpoint = os.getenv('TOKEN')
+        print('Got token endpoint')
         print('using config file: ' + str(config_file) + ' with endpoint ' + self.token_endpoint)
 
     def get_token(self):

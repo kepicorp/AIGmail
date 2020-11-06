@@ -18,11 +18,13 @@ Clone the repository
 git clone https://github.com/kepicorp/AIGmail.git
 ```
 
-Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *config/config.csv* file
+Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id```, ```client_secret``` and ```token_endpoint``` in *.env* file
 
-| application_id | access_key | reply_url | token_endpoint |
-| --- | --- | --- | --- |
-| USER ID | ACCESS KEY | * | https://api.fusionfabric.cloud/login/v1/sandbox/oidc/token |
+```bash
+CLIENT_ID=XXXX
+CLIENT_SECRET=YYYY
+TOKEN=https://api.fusionfabric.cloud/login/v1/sandbox/oidc/token
+```
 
 Run the docker compose
 
