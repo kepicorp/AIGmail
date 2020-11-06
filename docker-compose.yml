@@ -5,7 +5,9 @@ services:
   flask:
     build:
       context: flask
-    volumes:
-      - ./config/:/app/config/:ro
+    environment:
+      - CLIENT_ID=XXXX
+      - CLIENT_SECRET=YYYY
+      - TOKEN=https://api.fusionfabric.cloud/login/v1/sandbox/oidc/token
     ports:
     - 5001:5001
