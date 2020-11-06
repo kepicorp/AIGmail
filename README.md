@@ -18,7 +18,7 @@ Clone the repository
 git clone https://github.com/kepicorp/AIGmail.git
 ```
 
-Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *config.csv* file
+Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id client_secret token_endpoint``` and ```base_url``` in *config/config.csv* file
 
 | application_id | access_key | reply_url | token_endpoint |
 | --- | --- | --- | --- |
