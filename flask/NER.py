@@ -23,8 +23,8 @@ from sklearn_crfsuite import CRF
 from sklearn_crfsuite.metrics import flat_classification_report
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn_crfsuite import CRF as skCRF
-from sklearn.externals import joblib
-
+#from sklearn.externals import joblib
+import joblib
 
 
 class CRF_NER:
