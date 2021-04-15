@@ -18,7 +18,7 @@ Clone the repository
 git clone https://github.com/kepicorp/AIGmail.git
 ```
 
-Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id```, ```client_secret``` and ```token_endpoint``` in *docker-compose.yml* file
+Assuming you registered an app at [fusion fabric developer website](https://developer.fusionfabric.cloud), configure your ```client_id```, ```client_secret``` and ```token_endpoint``` in *docker-compose.yml* file (you have a sample file as *docker-compose.yml.sample*)
 
 ```bash
 CLIENT_ID=XXXX

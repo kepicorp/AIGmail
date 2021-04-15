@@ -1,0 +1,14 @@
+version: "2"
+
+services:
+
+  flask:
+    build:
+      context: flask
+    image: innovationla20e09c94.azurecr.io/aigmail:1.0
+    environment:
+      - CLIENT_ID=XXX
+      - CLIENT_SECRET=YYY
+      - TOKEN=https://api.fusionfabric.cloud/login/v1/sandbox/oidc/token
+    ports:
+    - 5001:5001
